@@ -5,7 +5,7 @@
  */
 'use strict';
 
-/* global window, document, getOuterHTMLSnippet, getBoundingClientRect, getNodePath, getNodeLabel */
+/* global window, document, getNodeInfo */
 
 const Gatherer = require('./gatherer.js');
 const fs = require('fs');
@@ -60,18 +60,8 @@ function runA11yChecks() {
     const augmentAxeNodes = result => {
       // @ts-expect-error
       result.nodes.forEach(node => {
-        // @ts-expect-error - getNodePath put into scope via stringification
-        node.path = getNodePath(node.element);
-        // @ts-expect-error - getOuterHTMLSnippet put into scope via stringification
-        node.snippet = getOuterHTMLSnippet(node.element);
-        // @ts-expect-error - getBoundingClientRect put into scope via stringification
-        const rect = getBoundingClientRect(node.element);
-        if (rect.width > 0 && rect.height > 0) {
-          node.boundingRect = rect;
-        }
-
-        // @ts-expect-error - getNodeLabel put into scope via stringification
-        node.nodeLabel = getNodeLabel(node.element);
+        // @ts-expect-error - getNodeInfo put into scope via stringification
+        node = {...node, ...getNodeInfo(node.element)};
         // avoid circular JSON concerns
         node.element = node.any = node.all = node.none = undefined;
       });
@@ -114,6 +104,9 @@ class Accessibility extends Gatherer {
       ${pageFunctions.getBoundingClientRectString};
       ${pageFunctions.getNodePathString};
       ${pageFunctions.getNodeLabelString};
+      ${pageFunctions.getNodeSelectorString};
+      ${pageFunctions.getNodeInfoString};
+      ${pageFunctions.getOuterHTMLSnippetString};
       ${axeLibSource};
       return (${runA11yChecks.toString()}());
     })()`;

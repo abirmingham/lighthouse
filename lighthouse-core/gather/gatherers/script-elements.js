@@ -11,7 +11,7 @@ const NetworkRequest = require('../../lib/network-request.js');
 const getElementsInDocumentString = require('../../lib/page-functions.js').getElementsInDocumentString; // eslint-disable-line max-len
 const pageFunctions = require('../../lib/page-functions.js');
 
-/* global getNodePath */
+/* global getNodeInfo */
 
 /**
  * @return {LH.Artifacts['ScriptElements']}
@@ -30,8 +30,8 @@ function collectAllScriptElements() {
       async: script.async,
       defer: script.defer,
       source: /** @type {'head'|'body'} */ (script.closest('head') ? 'head' : 'body'),
-      // @ts-expect-error - getNodePath put into scope via stringification
-      devtoolsNodePath: getNodePath(script),
+      // @ts-expect-error - getNodeInfo put into scope via stringification
+      ...getNodeInfo(script),
       content: script.src ? null : script.text,
       requestId: null,
     };
@@ -75,7 +75,12 @@ class ScriptElements extends Gatherer {
     /** @type {LH.Artifacts['ScriptElements']} */
     const scripts = await driver.evaluateAsync(`(() => {
       ${getElementsInDocumentString}
+      ${pageFunctions.getBoundingClientRectString};
       ${pageFunctions.getNodePathString};
+      ${pageFunctions.getNodeSelectorString};
+      ${pageFunctions.getNodeLabelString};
+      ${pageFunctions.getNodeInfoString};
+      ${pageFunctions.getOuterHTMLSnippetString};
       return (${collectAllScriptElements.toString()})();
     })()`, {useIsolation: true});
 
@@ -108,6 +113,10 @@ class ScriptElements extends Gatherer {
       } else {
         scripts.push({
           devtoolsNodePath: '',
+          snippet: '',
+          selector: '',
+          boundingRect: null,
+          nodeLabel: '',
           type: null,
           src: record.url,
           id: null,

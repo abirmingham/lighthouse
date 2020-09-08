@@ -5,6 +5,8 @@
  */
 'use strict';
 
+/* global getNodeInfo */
+
 const Gatherer = require('./gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 
@@ -21,6 +23,8 @@ function collectIFrameElements() {
     const clientRect = node.getBoundingClientRect();
     const {top, bottom, left, right, width, height} = clientRect;
     return {
+      // @ts-expect-error - getNodeInfo put into scope via stringification
+      ...getNodeInfo(node),
       id: node.id,
       src: node.src,
       clientRect: {top, bottom, left, right, width, height},
@@ -40,10 +44,15 @@ class IFrameElements extends Gatherer {
     const driver = passContext.driver;
 
     const expression = `(() => {
-      ${pageFunctions.getOuterHTMLSnippetString};
       ${pageFunctions.getElementsInDocumentString};
       ${pageFunctions.isPositionFixedString};
-      return (${collectIFrameElements})();
+      ${pageFunctions.getBoundingClientRectString};
+      ${pageFunctions.getNodePathString};
+      ${pageFunctions.getNodeSelectorString};
+      ${pageFunctions.getNodeLabelString};
+      ${pageFunctions.getNodeInfoString};
+      ${pageFunctions.getOuterHTMLSnippetString};
+      return (${collectIFrameElements.toString()})();
     })()`;
 
     /** @type {LH.Artifacts['IFrameElements']} */

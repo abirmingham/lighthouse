@@ -5,6 +5,8 @@
  */
 'use strict';
 
+/* global getNodeInfo */
+
 const Gatherer = require('./gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 
@@ -37,10 +39,8 @@ function collectFormElements() {
           id: parentFormElement.id,
           name: parentFormElement.name,
           autocomplete: parentFormElement.autocomplete,
-          // @ts-expect-error - put into scope via stringification
-          nodeLabel: getNodeLabel(parentFormElement), // eslint-disable-line no-undef,
-          // @ts-expect-error - put into scope via stringification
-          snippet: getOuterHTMLSnippet(parentFormElement), // eslint-disable-line no-undef
+          // @ts-expect-error - getNodeInfo put into scope via stringification
+          ...getNodeInfo(parentFormElement),
         },
         inputs: [],
         labels: [],
@@ -56,19 +56,15 @@ function collectFormElements() {
         name: child.name,
         placeholder: child instanceof HTMLSelectElement ? undefined : child.placeholder,
         autocomplete: child.autocomplete,
-        // @ts-expect-error - put into scope via stringification
-        nodeLabel: getNodeLabel(child), // eslint-disable-line no-undef,
-        // @ts-expect-error - put into scope via stringification
-        snippet: getOuterHTMLSnippet(child), // eslint-disable-line no-undef
+        // @ts-expect-error - getNodeInfo put into scope via stringification
+        ...getNodeInfo(child),
       });
     }
     if (child instanceof HTMLLabelElement) {
       formObj.labels.push({
         for: child.htmlFor,
-        // @ts-expect-error - put into scope via stringification
-        nodeLabel: getNodeLabel(child), // eslint-disable-line no-undef,
-        // @ts-expect-error - put into scope via stringification
-        snippet: getOuterHTMLSnippet(child), // eslint-disable-line no-undef
+        // @ts-expect-error - getNodeInfo put into scope via stringification
+        ...getNodeInfo(child),
       });
     }
   }
@@ -92,8 +88,12 @@ class FormElements extends Gatherer {
 
     const expression = `(() => {
       ${pageFunctions.getElementsInDocumentString};
-      ${pageFunctions.getOuterHTMLSnippetString};
+      ${pageFunctions.getBoundingClientRectString};
+      ${pageFunctions.getNodePathString};
+      ${pageFunctions.getNodeSelectorString};
       ${pageFunctions.getNodeLabelString};
+      ${pageFunctions.getNodeInfoString};
+      ${pageFunctions.getOuterHTMLSnippetString};
       return (${collectFormElements})();
     })()`;
 

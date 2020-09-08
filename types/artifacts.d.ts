@@ -132,8 +132,8 @@ declare global {
       Offline: number;
       /** Size and compression opportunity information for all the images in the page. */
       OptimizedImages: Array<Artifacts.OptimizedImage | Artifacts.OptimizedImageError>;
-      /** HTML snippets from any password inputs that prevent pasting. */
-      PasswordInputsWithPreventedPaste: {snippet: string}[];
+      /** HTML snippets and node paths from any password inputs that prevent pasting. */
+      PasswordInputsWithPreventedPaste: {snippet: string, devtoolsNodePath: string}[];
       /** Size info of all network records sent without compression and their size after gzipping. */
       ResponseCompression: {requestId: string, url: string, mimeType: string, transferSize: number, resourceSize: number, gzipSize?: number}[];
       /** Information on fetching and the content of the /robots.txt file. */
@@ -167,10 +167,11 @@ declare global {
         impact: string;
         tags: Array<string>;
         nodes: Array<{
-          path: string;
+          devtoolsNodePath: string;
           html: string;
           boundingRect?: Rect;
           snippet: string;
+          selector: string;
           target: Array<string>;
           failureSummary?: string;
           nodeLabel?: string;
@@ -217,6 +218,12 @@ declare global {
       export interface IFrameElement {
         /** The `id` attribute of the iframe. */
         id: string,
+        /** Details for node in DOM for the iframe element */
+        devtoolsNodePath: string,
+        selector: string,
+        boundingRect: Rect,
+        snippet: string,
+        nodeLabel: string,
         /** The `src` attribute of the iframe. */
         src: string,
         /** The iframe's ClientRect. @see https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect */
@@ -263,8 +270,12 @@ declare global {
         id: string | null
         async: boolean
         defer: boolean
-        /** Path that uniquely identifies the node in the DOM */
-        devtoolsNodePath: string;
+        /** Details for node in DOM for the script element */
+        devtoolsNodePath: string
+        selector: string
+        boundingRect: Rect | null
+        snippet: string
+        nodeLabel: string
         /** Where the script was discovered, either in the head, the body, or network records. */
         source: 'head'|'body'|'network'
         /** The content of the inline script or the network record with the matching URL, null if the script had a src and no network record could be found. */
@@ -343,8 +354,10 @@ declare global {
         role: string
         target: string
         devtoolsNodePath: string
+        snippet: string
         selector: string
         nodeLabel: string
+        boundingRect: Rect
         outerHTML: string
         onclick: string
         listeners?: Array<{
@@ -449,11 +462,12 @@ declare global {
         usesSrcSetDensityDescriptor: boolean;
         /** The size of the underlying image file in bytes. 0 if the file could not be identified. */
         resourceSize: number;
-        /** Path that uniquely identifies the node in the DOM */
+        /** Details for node in DOM for the image element */
         devtoolsNodePath: string;
         snippet: string;
         selector: string;
         nodeLabel: string;
+        boundingRect: Rect;
         /** The MIME type of the underlying image file. */
         mimeType?: string;
         /** The loading attribute of the image. */
@@ -505,7 +519,7 @@ declare global {
         snippet: string;
         selector: string;
         nodeLabel?: string;
-        path: string;
+        devtoolsNodePath: string;
         href: string;
         clientRects: Rect[];
         boundingRect: Rect;
@@ -514,10 +528,10 @@ declare global {
       export interface TraceElement {
         traceEventType: 'largest-contentful-paint'|'layout-shift'|'animation';
         selector: string;
-        nodeLabel?: string;
+        nodeLabel: string;
         devtoolsNodePath: string;
-        snippet?: string;
-        score?: number;
+        snippet: string;
+        score: number;
         boundingRect: Rect;
         nodeId?: number;
         animations?: {name?: string, failureReasonsMask?: number, unsupportedProperties?: string[]}[];
@@ -722,7 +736,7 @@ declare global {
 
       export interface Form {
         /** If attributes is missing that means this is a formless set of elements. */
-        attributes?: { id: string, name: string, autocomplete: string, nodeLabel: string, snippet: string,};
+        attributes?: { id: string, name: string, autocomplete: string, devtoolsNodePath: string, selector: string, boundingRect: Rect, nodeLabel: string, snippet: string,};
         inputs: Array<FormInput>;
         labels: Array<FormLabel>;
       }

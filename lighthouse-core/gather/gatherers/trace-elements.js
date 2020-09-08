@@ -5,6 +5,8 @@
  */
 'use strict';
 
+/* global getNodeInfo */
+
 /**
  * @fileoverview
  * This gatherer identifies elements that contribrute to metrics in the trace (LCP, CLS, etc.).
@@ -28,16 +30,8 @@ function getNodeDetailsData() {
   let traceElement;
   if (elem) {
     traceElement = {
-      // @ts-expect-error - put into scope via stringification
-      devtoolsNodePath: getNodePath(elem), // eslint-disable-line no-undef
-      // @ts-expect-error - put into scope via stringification
-      selector: getNodeSelector(elem), // eslint-disable-line no-undef
-      // @ts-expect-error - put into scope via stringification
-      nodeLabel: getNodeLabel(elem), // eslint-disable-line no-undef
-      // @ts-expect-error - put into scope via stringification
-      snippet: getOuterHTMLSnippet(elem), // eslint-disable-line no-undef
-      // @ts-expect-error - put into scope via stringification
-      boundingRect: getBoundingClientRect(elem), // eslint-disable-line no-undef
+      // @ts-expect-error - getNodeInfo put into scope via stringification
+      ...getNodeInfo(elem),
     };
   }
   return traceElement;
@@ -288,11 +282,12 @@ class TraceElements extends Gatherer {
             objectId,
             functionDeclaration: `function () {
               ${getNodeDetailsData.toString()};
+              ${pageFunctions.getBoundingClientRectString};
               ${pageFunctions.getNodePathString};
               ${pageFunctions.getNodeSelectorString};
               ${pageFunctions.getNodeLabelString};
+              ${pageFunctions.getNodeInfoString};
               ${pageFunctions.getOuterHTMLSnippetString};
-              ${pageFunctions.getBoundingClientRectString};
               return getNodeDetailsData.call(this);
             }`,
             returnByValue: true,

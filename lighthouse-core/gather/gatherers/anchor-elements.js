@@ -5,6 +5,8 @@
  */
 'use strict';
 
+/* global getNodeInfo */
+
 const Gatherer = require('./gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 
@@ -41,15 +43,6 @@ function collectAnchorElements() {
   const anchorElements = getElementsInDocument('a'); // eslint-disable-line no-undef
 
   return anchorElements.map(node => {
-    // @ts-expect-error - put into scope via stringification
-    const outerHTML = getOuterHTMLSnippet(node); // eslint-disable-line no-undef
-    // @ts-expect-error - put into scope via stringification
-    const nodePath = getNodePath(node); // eslint-disable-line no-undef
-    // @ts-expect-error - getNodeSelector put into scope via stringification
-    const selector = getNodeSelector(node); // eslint-disable-line no-undef
-    // @ts-expect-error - getNodeLabel put into scope via stringification
-    const nodeLabel = getNodeLabel(node); // eslint-disable-line no-undef
-
     if (node instanceof HTMLAnchorElement) {
       return {
         href: node.href,
@@ -60,10 +53,8 @@ function collectAnchorElements() {
         text: node.innerText, // we don't want to return hidden text, so use innerText
         rel: node.rel,
         target: node.target,
-        devtoolsNodePath: nodePath,
-        selector,
-        nodeLabel,
-        outerHTML,
+        // @ts-expect-error - getNodeInfo put into scope via stringification
+        ...getNodeInfo(node),
       };
     }
 
@@ -75,10 +66,8 @@ function collectAnchorElements() {
       text: node.textContent || '',
       rel: '',
       target: node.target.baseVal || '',
-      devtoolsNodePath: nodePath,
-      selector,
-      nodeLabel,
-      outerHTML,
+      // @ts-expect-error - getNodeInfo put into scope via stringification
+      ...getNodeInfo(node),
     };
   });
 }
@@ -107,11 +96,13 @@ class AnchorElements extends Gatherer {
   async afterPass(passContext) {
     const driver = passContext.driver;
     const expression = `(() => {
-      ${pageFunctions.getOuterHTMLSnippetString};
       ${pageFunctions.getElementsInDocumentString};
+      ${pageFunctions.getBoundingClientRectString};
       ${pageFunctions.getNodePathString};
       ${pageFunctions.getNodeSelectorString};
       ${pageFunctions.getNodeLabelString};
+      ${pageFunctions.getNodeInfoString};
+      ${pageFunctions.getOuterHTMLSnippetString};
 
       return (${collectAnchorElements})();
     })()`;
