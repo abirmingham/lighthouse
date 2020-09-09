@@ -416,16 +416,20 @@ function wrapRequestIdleCallback(cpuSlowdownMultiplier) {
   };
 }
 
-function getNodeInfo(element) {
+const getNodeInfoString = `function getNodeInfo(elem) {
+  ${getNodePath.toString()};
+  ${getNodeSelector.toString()};
+  ${getBoundingClientRect.toString()};
+  ${getOuterHTMLSnippet.toString()};
+  ${getNodeLabel.toString()};
   return {
-    type: 'node',
-    devtoolsNodePath: getNodePath(element),
-    selector: getNodeSelector(element),
-    boundingRect: getBoundingClientRect(element),
-    snippet: getOuterHTMLSnippet(element),
-    nodeLabel: getNodeLabel(element),
+    devtoolsNodePath: getNodePath(elem),
+    selector: getNodeSelector(elem),
+    boundingRect: getBoundingClientRect(elem),
+    snippet: getOuterHTMLSnippet(elem),
+    nodeLabel: getNodeLabel(elem),
   };
-}
+}`;
 
 module.exports = {
   wrapRuntimeEvalErrorInBrowserString: wrapRuntimeEvalErrorInBrowser.toString(),
@@ -436,7 +440,7 @@ module.exports = {
   getOuterHTMLSnippet: getOuterHTMLSnippet,
   computeBenchmarkIndex: computeBenchmarkIndex,
   computeBenchmarkIndexString: computeBenchmarkIndex.toString(),
-  getNodeInfoString: getNodeInfo.toString(),
+  getNodeInfoString,
   getNodePathString: getNodePath.toString(),
   getNodeSelectorString: getNodeSelector.toString(),
   getNodeSelector: getNodeSelector,

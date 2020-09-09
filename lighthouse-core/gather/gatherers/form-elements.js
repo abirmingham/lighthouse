@@ -87,13 +87,7 @@ class FormElements extends Gatherer {
     const driver = passContext.driver;
 
     const expression = `(() => {
-      ${pageFunctions.getElementsInDocumentString};
-      ${pageFunctions.getBoundingClientRectString};
-      ${pageFunctions.getNodePathString};
-      ${pageFunctions.getNodeSelectorString};
-      ${pageFunctions.getNodeLabelString};
       ${pageFunctions.getNodeInfoString};
-      ${pageFunctions.getOuterHTMLSnippetString};
       return (${collectFormElements})();
     })()`;
 

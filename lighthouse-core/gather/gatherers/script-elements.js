@@ -75,12 +75,7 @@ class ScriptElements extends Gatherer {
     /** @type {LH.Artifacts['ScriptElements']} */
     const scripts = await driver.evaluateAsync(`(() => {
       ${getElementsInDocumentString}
-      ${pageFunctions.getBoundingClientRectString};
-      ${pageFunctions.getNodePathString};
-      ${pageFunctions.getNodeSelectorString};
-      ${pageFunctions.getNodeLabelString};
       ${pageFunctions.getNodeInfoString};
-      ${pageFunctions.getOuterHTMLSnippetString};
       return (${collectAllScriptElements.toString()})();
     })()`, {useIsolation: true});
 

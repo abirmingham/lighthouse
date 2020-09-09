@@ -282,12 +282,7 @@ class TraceElements extends Gatherer {
             objectId,
             functionDeclaration: `function () {
               ${getNodeDetailsData.toString()};
-              ${pageFunctions.getBoundingClientRectString};
-              ${pageFunctions.getNodePathString};
-              ${pageFunctions.getNodeSelectorString};
-              ${pageFunctions.getNodeLabelString};
               ${pageFunctions.getNodeInfoString};
-              ${pageFunctions.getOuterHTMLSnippetString};
               return getNodeDetailsData.call(this);
             }`,
             returnByValue: true,

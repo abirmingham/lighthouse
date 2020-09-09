@@ -300,12 +300,8 @@ class ImageElements extends Gatherer {
 
     const expression = `(function() {
       ${pageFunctions.getElementsInDocumentString}; // define function on page
-      ${pageFunctions.getNodePathString};
-      ${pageFunctions.getNodeSelectorString};
-      ${pageFunctions.getNodeLabelString};
-      ${pageFunctions.getOuterHTMLSnippetString};
-      ${pageFunctions.getNodeInfoString};
       ${pageFunctions.getBoundingClientRectString};
+      ${pageFunctions.getNodeInfoString};
       ${getClientRect.toString()};
       ${getPosition.toString()};
       ${getHTMLImages.toString()};

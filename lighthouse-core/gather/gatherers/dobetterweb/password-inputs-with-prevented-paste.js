@@ -35,12 +35,7 @@ class PasswordInputsWithPreventedPaste extends Gatherer {
    */
   afterPass(passContext) {
     const expression = `(() => {
-      ${pageFunctions.getBoundingClientRectString};
-      ${pageFunctions.getNodePathString};
-      ${pageFunctions.getNodeSelectorString};
-      ${pageFunctions.getNodeLabelString};
       ${pageFunctions.getNodeInfoString};
-      ${pageFunctions.getOuterHTMLSnippetString};
       return (${findPasswordInputsWithPreventedPaste.toString()}());
     })()`;
 
