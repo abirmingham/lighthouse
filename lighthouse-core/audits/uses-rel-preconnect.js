@@ -45,7 +45,7 @@ const UIStrings = {
   crossoriginWarning: 'A `<link rel=preconnect>` was found for "{securityOrigin}" but was not used ' +
     'by the browser. Check that you are using the `crossorigin` attribute properly.',
   /** A warning message that is shown when found more than 2 preconnected links */
-  tooManyPreconnectLinksWarning: 'More than 2 `<link rel=preconnect>` were found. ' +
+  tooManyPreconnectLinksWarning: 'More than 2 `<link rel=preconnect>` directives were found. ' +
    'These should be used sparingly and only to the most important origins.',
 };
 
