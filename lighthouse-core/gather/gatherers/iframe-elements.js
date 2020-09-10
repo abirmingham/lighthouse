@@ -5,6 +5,8 @@
  */
 'use strict';
 
+/* global getNodeInfo */
+
 const Gatherer = require('./gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 

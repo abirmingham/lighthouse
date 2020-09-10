@@ -62,12 +62,7 @@ function runA11yChecks() {
 
       result.nodes.forEach(node => {
         // @ts-expect-error - getNodeInfo put into scope via stringification
-        const nodeInfo = getNodeInfo(node.element);
-        node.devtoolsNodePath = nodeInfo.devtoolsNodePath;
-        node.selector = nodeInfo.selector;
-        node.nodeLabel = nodeInfo.nodeLabel;
-        node.snippet = nodeInfo.snippet;
-        node.boundingRect = nodeInfo.boundingRect;
+        Object.assign(node, getNodeInfo(node.element));
         // avoid circular JSON concerns
         node.element = node.any = node.all = node.none = undefined;
       });
