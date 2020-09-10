@@ -59,9 +59,15 @@ function runA11yChecks() {
     // @ts-expect-error
     const augmentAxeNodes = result => {
       // @ts-expect-error
+      
       result.nodes.forEach(node => {
         // @ts-expect-error - getNodeInfo put into scope via stringification
-        node = {...node, ...getNodeInfo(node.element)};
+        const nodeInfo = getNodeInfo(node.element);
+        node.devtoolsNodePath = nodeInfo.devtoolsNodePath;
+        node.selector = nodeInfo.selector;
+        node.nodeLabel = nodeInfo.nodeLabel;
+        node.snippet = nodeInfo.snippet;
+        node.boundingRect = nodeInfo.boundingRect;
         // avoid circular JSON concerns
         node.element = node.any = node.all = node.none = undefined;
       });
