@@ -110,7 +110,6 @@ class ScriptElements extends Gatherer {
           devtoolsNodePath: '',
           snippet: '',
           selector: '',
-          boundingRect: null,
           nodeLabel: '',
           type: null,
           src: record.url,

@@ -273,7 +273,6 @@ declare global {
         /** Details for node in DOM for the script element */
         devtoolsNodePath: string
         selector: string
-        boundingRect: Rect | null
         snippet: string
         nodeLabel: string
         /** Where the script was discovered, either in the head, the body, or network records. */
