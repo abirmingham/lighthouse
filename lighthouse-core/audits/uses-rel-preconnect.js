@@ -36,17 +36,17 @@ const UIStrings = {
    * @description A warning message that is shown when the user tried to follow the advice of the audit, but it's not working as expected.
    * @example {https://example.com} securityOrigin
    * */
-  unusedWarning: 'A preconnect `<link>` was found for "{securityOrigin}" but was not used ' +
-    'by the browser. Only preconnect to important origins that the page will certainly request.',
+  unusedWarning: 'A `<link rel=preconnect>` was found for "{securityOrigin}" but was not used ' +
+    'by the browser. Only use `preconnect` for important origins that the page will certainly request.',
   /**
    * @description A warning message that is shown when the user tried to follow the advice of the audit, but it's not working as expected. Forgetting to set the `crossorigin` HTML attribute, or setting it to an incorrect value, on the link is a common mistake when adding preconnect links.
    * @example {https://example.com} securityOrigin
    * */
-  crossoriginWarning: 'A preconnect `<link>` was found for "{securityOrigin}" but was not used ' +
+  crossoriginWarning: 'A `<link rel=preconnect>` was found for "{securityOrigin}" but was not used ' +
     'by the browser. Check that you are using the `crossorigin` attribute properly.',
   /** A warning message that is shown when found more than 2 preconnected links */
-  tooManyPreconnectLinksWarning: 'More than 2 preconnect links were found. ' +
-   'Preconnect links should be used sparingly and only to the most important origins.',
+  tooManyPreconnectLinksWarning: 'More than 2 `<link rel=preconnect>` were found. ' +
+   'These should be used sparingly and only to the most important origins.',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
