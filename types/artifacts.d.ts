@@ -357,7 +357,6 @@ declare global {
         selector: string
         nodeLabel: string
         boundingRect: Rect
-        outerHTML: string
         onclick: string
         listeners?: Array<{
           type: Crdp.DOMDebugger.EventListener['type']
