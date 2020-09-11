@@ -67,7 +67,7 @@ function collectAnchorElements() {
       text: node.textContent || '',
       rel: '',
       target: node.target.baseVal || '',
-        ...nodeInfo,
+      ...nodeInfo,
     };
   });
 }

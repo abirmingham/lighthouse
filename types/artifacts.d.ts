@@ -735,14 +735,14 @@ declare global {
       export interface Form {
         /** If attributes is missing that means this is a formless set of elements. */
         attributes?: {
-          id: string,
-          name: string,
-          autocomplete: string,
-          devtoolsNodePath: string,
-          selector: string,
-          boundingRect: Rect,
-          nodeLabel: string,
-          snippet: string,
+          id: string;
+          name: string;
+          autocomplete: string;
+          devtoolsNodePath: string;
+          selector: string;
+          boundingRect: Rect;
+          nodeLabel: string;
+          snippet: string;
         };
         inputs: Array<FormInput>;
         labels: Array<FormLabel>;
