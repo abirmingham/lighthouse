@@ -1377,7 +1377,7 @@
     "message": "P̂ŕêćôńn̂éĉt́ t̂ó r̂éq̂úîŕêd́ ôŕîǵîńŝ"
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | tooManyPreconnectLinksWarning": {
-    "message": "M̂ór̂é t̂h́âń 2 `<link rel=preconnect>` d̂ír̂éĉt́îv́êś ŵér̂é f̂óûńd̂. T́ĥéŝé ŝh́ôúl̂d́ b̂é ûśêd́ ŝṕâŕîńĝĺŷ án̂d́ ôńl̂ý t̂ó t̂h́ê ḿôśt̂ ím̂ṕôŕt̂án̂t́ ôŕîǵîńŝ."
+    "message": "M̂ór̂é t̂h́âń 2 `<link rel=preconnect>` ĉón̂ńêćt̂íôńŝ ẃêŕê f́ôún̂d́. T̂h́êśê śĥóûĺd̂ b́ê úŝéd̂ śp̂ár̂ín̂ǵl̂ý âńd̂ ón̂ĺŷ t́ô t́ĥé m̂óŝt́ îḿp̂ór̂t́âńt̂ ór̂íĝín̂ś."
   },
   "lighthouse-core/audits/uses-rel-preconnect.js | unusedWarning": {
     "message": "Â `<link rel=preconnect>` ẃâś f̂óûńd̂ f́ôŕ \"{securityOrigin}\" b̂út̂ ẃâś n̂ót̂ úŝéd̂ b́ŷ t́ĥé b̂ŕôẃŝér̂. Ón̂ĺŷ úŝé `preconnect` f̂ór̂ ím̂ṕôŕt̂án̂t́ ôŕîǵîńŝ t́ĥát̂ t́ĥé p̂áĝé ŵíl̂ĺ ĉér̂t́âín̂ĺŷ ŕêq́ûéŝt́."
