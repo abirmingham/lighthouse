@@ -529,7 +529,7 @@ declare global {
         nodeLabel: string;
         devtoolsNodePath: string;
         snippet: string;
-        score: number;
+        score?: number;
         boundingRect: Rect;
         nodeId?: number;
         animations?: {name?: string, failureReasonsMask?: number, unsupportedProperties?: string[]}[];
