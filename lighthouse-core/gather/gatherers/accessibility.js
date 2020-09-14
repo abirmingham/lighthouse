@@ -5,7 +5,7 @@
  */
 'use strict';
 
-/* global window, document, getNodeInfo */
+/* global window, document, getNodeDetails */
 
 const Gatherer = require('./gatherer.js');
 const fs = require('fs');
@@ -61,8 +61,8 @@ function runA11yChecks() {
       // @ts-expect-error
 
       result.nodes.forEach(node => {
-        // @ts-expect-error - getNodeInfo put into scope via stringification
-        Object.assign(node, getNodeInfo(node.element));
+        // @ts-expect-error - getNodeDetails put into scope via stringification
+        Object.assign(node, getNodeDetails(node.element));
         // avoid circular JSON concerns
         node.element = node.any = node.all = node.none = undefined;
       });
@@ -101,7 +101,7 @@ class Accessibility extends Gatherer {
   afterPass(passContext) {
     const driver = passContext.driver;
     const expression = `(function () {
-      ${pageFunctions.getNodeInfoString};
+      ${pageFunctions.getNodeDetailsString};
       ${axeLibSource};
       return (${runA11yChecks.toString()}());
     })()`;

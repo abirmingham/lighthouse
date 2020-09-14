@@ -5,7 +5,7 @@
  */
 'use strict';
 
-/* global document, window, getComputedStyle, getElementsInDocument, Node, getNodeInfo */
+/* global document, window, getComputedStyle, getElementsInDocument, Node, getNodeDetails */
 
 const Gatherer = require('../gatherer.js');
 const pageFunctions = require('../../../lib/page-functions.js');
@@ -271,8 +271,8 @@ function gatherTapTargets() {
     targets.push({
       clientRects: visibleClientRects,
       href: /** @type {HTMLAnchorElement} */(tapTargetElement)['href'] || '',
-      // @ts-expect-error - getNodeInfo put into scope via stringification
-      ...getNodeInfo(tapTargetElement),
+      // @ts-expect-error - getNodeDetails put into scope via stringification
+      ...getNodeDetails(tapTargetElement),
     });
   }
 
@@ -301,7 +301,7 @@ class TapTargets extends Gatherer {
       ${getLargestRect.toString()};
       ${getRectCenterPoint.toString()};
       ${rectContains.toString()};
-      ${pageFunctions.getNodeInfoString};
+      ${pageFunctions.getNodeDetailsString};
       ${gatherTapTargets.toString()};
 
       return gatherTapTargets();

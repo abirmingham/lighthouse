@@ -5,7 +5,7 @@
  */
 'use strict';
 
-/* global getNodeInfo */
+/* global getNodeDetails */
 
 /**
  * @fileoverview
@@ -30,8 +30,8 @@ function getNodeDetailsData() {
   let traceElement;
   if (elem) {
     traceElement = {
-      // @ts-expect-error - getNodeInfo put into scope via stringification
-      ...getNodeInfo(elem),
+      // @ts-expect-error - getNodeDetails put into scope via stringification
+      ...getNodeDetails(elem),
     };
   }
   return traceElement;
@@ -282,7 +282,7 @@ class TraceElements extends Gatherer {
             objectId,
             functionDeclaration: `function () {
               ${getNodeDetailsData.toString()};
-              ${pageFunctions.getNodeInfoString};
+              ${pageFunctions.getNodeDetailsString};
               return getNodeDetailsData.call(this);
             }`,
             returnByValue: true,

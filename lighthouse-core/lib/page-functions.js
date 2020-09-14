@@ -420,7 +420,7 @@ function wrapRequestIdleCallback(cpuSlowdownMultiplier) {
   };
 }
 
-const getNodeInfoString = `function getNodeInfo(elem) {
+const getNodeDetailsString = `function getNodeDetails(elem) {
   ${getNodePath.toString()};
   ${getNodeSelector.toString()};
   ${getBoundingClientRect.toString()};
@@ -444,7 +444,7 @@ module.exports = {
   getOuterHTMLSnippet: getOuterHTMLSnippet,
   computeBenchmarkIndex: computeBenchmarkIndex,
   computeBenchmarkIndexString: computeBenchmarkIndex.toString(),
-  getNodeInfoString,
+  getNodeDetailsString,
   getNodePathString: getNodePath.toString(),
   getNodeSelectorString: getNodeSelector.toString(),
   getNodeSelector: getNodeSelector,
