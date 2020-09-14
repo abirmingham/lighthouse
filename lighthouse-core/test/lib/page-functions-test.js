@@ -130,7 +130,7 @@ describe('Page Functions', () => {
   });
 
   describe('getNodePath', () => {
-    it('Returns basic node path', () => {
+    it('returns basic node path', () => {
       const el = dom.createElement('div');
       el.innerHTML = `
         <section>
@@ -139,11 +139,11 @@ describe('Page Functions', () => {
         </section>
       `;
       const img = el.querySelector('img');
-      // The img is index 1 of section's children (excluding some whitespace only text nodes)
+      // The img is index 1 of section's children (excluding some whitespace only text nodes).
       assert.equal(pageFunctions.getNodePath(img), '0,SECTION,1,IMG');
     });
 
-    it('Returns node path through shadow root', () => {
+    it('returns node path through shadow root', () => {
       const el = dom.createElement('div');
       const main = el.appendChild(dom.createElement('main'));
       const shadowRoot = main.attachShadow({mode: 'open'});
