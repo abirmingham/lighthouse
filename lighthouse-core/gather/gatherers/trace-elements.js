@@ -29,10 +29,8 @@ function getNodeDetailsData() {
   const elem = this.nodeType === document.ELEMENT_NODE ? this : this.parentElement; // eslint-disable-line no-undef
   let traceElement;
   if (elem) {
-    traceElement = {
-      // @ts-expect-error - getNodeDetails put into scope via stringification
-      ...getNodeDetails(elem),
-    };
+    // @ts-expect-error - getNodeDetails put into scope via stringification
+    traceElement = getNodeDetails(elem);
   }
   return traceElement;
 }
