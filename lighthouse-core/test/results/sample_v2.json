@@ -2226,8 +2226,7 @@
             "node": {
               "type": "node",
               "selector": "h2",
-              "path": "3,HTML,1,BODY,5,DIV,0,H2",
-              "snippet": "<h2>Do better web tester page</h2>",
+              "snippet": "<h2>",
               "boundingRect": {
                 "width": 396,
                 "height": 28,
@@ -2244,8 +2243,7 @@
             "node": {
               "type": "node",
               "selector": "span",
-              "path": "3,HTML,1,BODY,5,DIV,1,SPAN",
-              "snippet": "<span>Hi there!</span>",
+              "snippet": "<span>",
               "boundingRect": {
                 "width": 57,
                 "height": 18,
@@ -2366,7 +2364,6 @@
             "node": {
               "type": "node",
               "selector": "html",
-              "path": "3,HTML",
               "snippet": "<html manifest=\"clock.appcache\">",
               "boundingRect": {
                 "width": 412,
@@ -2419,7 +2416,6 @@
             "node": {
               "type": "node",
               "selector": "img[height=\"\\35 7\"]",
-              "path": "3,HTML,1,BODY,10,IMG",
               "snippet": "<img src=\"lighthouse-480x318.jpg\" width=\"480\" height=\"57\">",
               "boundingRect": {
                 "width": 480,
@@ -2437,7 +2433,6 @@
             "node": {
               "type": "node",
               "selector": "img[height=\"\\33 18\"]",
-              "path": "3,HTML,1,BODY,12,IMG",
               "snippet": "<img src=\"lighthouse-480x318.jpg\" width=\"480\" height=\"318\">",
               "boundingRect": {
                 "width": 480,
@@ -2455,7 +2450,6 @@
             "node": {
               "type": "node",
               "selector": "img[src$=\"lighthouse-rotating\\.gif\"]",
-              "path": "3,HTML,1,BODY,14,IMG",
               "snippet": "<img src=\"lighthouse-rotating.gif\" width=\"811\" height=\"462\">",
               "boundingRect": {
                 "width": 811,
@@ -2473,7 +2467,6 @@
             "node": {
               "type": "node",
               "selector": "img:nth-child(30)",
-              "path": "3,HTML,1,BODY,53,IMG",
               "snippet": "<img src=\"blob:http://localhost:54759/41e77cc6-8eb2-49d5-a819-7edf852531be\">",
               "boundingRect": {
                 "width": 16,
@@ -2528,7 +2521,6 @@
             "node": {
               "type": "node",
               "selector": "input[onpaste=\"event\\.preventDefault\\(\\)\\;\"]",
-              "path": "3,HTML,1,BODY,48,INPUT",
               "snippet": "<input type=\"password\" onpaste=\"event.preventDefault();\">",
               "boundingRect": {
                 "width": 131,
@@ -2546,7 +2538,6 @@
             "node": {
               "type": "node",
               "selector": "input:nth-child(28)",
-              "path": "3,HTML,1,BODY,50,INPUT",
               "snippet": "<input type=\"password\">",
               "boundingRect": {
                 "width": 131,
@@ -2564,7 +2555,6 @@
             "node": {
               "type": "node",
               "selector": "input[onpaste=\"return\\ false\\;\"]",
-              "path": "3,HTML,1,BODY,52,INPUT",
               "snippet": "<input type=\"password\" onpaste=\"return false;\">",
               "boundingRect": {
                 "width": 131,
@@ -2620,8 +2610,7 @@
             "node": {
               "type": "node",
               "selector": "a[href=\"javascript\\:void\\(0\\)\"]",
-              "path": "3,HTML,1,BODY,44,A",
-              "snippet": "<a href=\"javascript:void(0)\" target=\"_blank\"></a>",
+              "snippet": "<a href=\"javascript:void(0)\" target=\"_blank\">",
               "explanation": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
               "nodeLabel": "a"
             }
@@ -2630,8 +2619,7 @@
             "node": {
               "type": "node",
               "selector": "a[href$=\"mailto\\:inbox\\@email\\.com\"]",
-              "path": "3,HTML,1,BODY,46,A",
-              "snippet": "<a href=\"mailto:inbox@email.com\" target=\"_blank\"></a>",
+              "snippet": "<a href=\"mailto:inbox@email.com\" target=\"_blank\">",
               "explanation": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"",
               "nodeLabel": "a"
             }
@@ -2704,8 +2692,7 @@
             "node": {
               "type": "node",
               "selector": "#\\35 934a",
-              "path": "3,HTML,1,BODY,2,OBJECT",
-              "snippet": "<object id=\"5934a\"></object>",
+              "snippet": "<object id=\"5934a\">",
               "boundingRect": {
                 "width": 300,
                 "height": 150,
@@ -2722,8 +2709,7 @@
             "node": {
               "type": "node",
               "selector": "#\\35 934b",
-              "path": "3,HTML,1,BODY,3,OBJECT",
-              "snippet": "<object id=\"5934b\"></object>",
+              "snippet": "<object id=\"5934b\">",
               "boundingRect": {
                 "width": 300,
                 "height": 150,
@@ -3519,7 +3505,7 @@
       "score": 0,
       "scoreDisplayMode": "binary",
       "warnings": [
-        "Unable to determine the destination for anchor (<a target=\"_blank\">). If not used as a hyperlink, consider removing target=_blank."
+        "Unable to determine the destination for anchor (). If not used as a hyperlink, consider removing target=_blank."
       ],
       "details": {
         "type": "table",
@@ -3537,12 +3523,12 @@
               "path": "3,HTML,1,BODY,36,A",
               "selector": "body > a",
               "nodeLabel": "external link",
-              "snippet": "<a href=\"https://www.google.com/\" target=\"_blank\">"
+              "snippet": ""
             },
             "href": "https://www.google.com/",
             "target": "_blank",
             "rel": "",
-            "outerHTML": "<a href=\"https://www.google.com/\" target=\"_blank\">"
+            "outerHTML": ""
           },
           {
             "node": {
@@ -3550,12 +3536,12 @@
               "path": "3,HTML,1,BODY,38,A",
               "selector": "body > a",
               "nodeLabel": "external link",
-              "snippet": "<a target=\"_blank\">"
+              "snippet": ""
             },
             "href": "Unknown",
             "target": "_blank",
             "rel": "",
-            "outerHTML": "<a target=\"_blank\">"
+            "outerHTML": ""
           },
           {
             "node": {
@@ -3563,12 +3549,12 @@
               "path": "3,HTML,1,BODY,40,A",
               "selector": "body > a",
               "nodeLabel": "external link",
-              "snippet": "<a href=\"https://www.google.com/\" target=\"_blank\" rel=\"nofollow\">"
+              "snippet": ""
             },
             "href": "https://www.google.com/",
             "target": "_blank",
             "rel": "nofollow",
-            "outerHTML": "<a href=\"https://www.google.com/\" target=\"_blank\" rel=\"nofollow\">"
+            "outerHTML": ""
           },
           {
             "node": {
@@ -3576,12 +3562,12 @@
               "path": "3,HTML,1,BODY,52,A",
               "selector": "body > a",
               "nodeLabel": "internal link is ok",
-              "snippet": "<a href=\"./doesnotexist\" target=\"_blank\">"
+              "snippet": ""
             },
             "href": "http://localhost:53133/dobetterweb/doesnotexist",
             "target": "_blank",
             "rel": "",
-            "outerHTML": "<a href=\"./doesnotexist\" target=\"_blank\">"
+            "outerHTML": ""
           }
         ]
       }
@@ -4083,7 +4069,6 @@
             "tapTarget": {
               "type": "node",
               "snippet": "<button class=\"small-button\">Do something</button>",
-              "path": "3,HTML,1,BODY,17,BUTTON",
               "selector": "body > button.small-button",
               "boundingRect": {
                 "left": 8,
@@ -4098,7 +4083,6 @@
             "overlappingTarget": {
               "type": "node",
               "snippet": "<button class=\"small-button\">Do something else</button>",
-              "path": "3,HTML,1,BODY,18,BUTTON",
               "selector": "body > button.small-button",
               "boundingRect": {
                 "left": 8,
@@ -7586,9 +7570,7 @@
       ],
       "lighthouse-core/audits/dobetterweb/external-anchors-use-rel-noopener.js | warning": [
         {
-          "values": {
-            "anchorHTML": "<a target=\"_blank\">"
-          },
+          "values": {},
           "path": "audits[external-anchors-use-rel-noopener].warnings[0]"
         }
       ],
